@@ -5,16 +5,27 @@
     font-family: 'Inter', sans-serif;
 }
 
+:root{
+    --darkEmerald: #026939;
+    --jadeGreen: #3BB44B;
+    --malachite: #3BDF51;
+    --verdeMusgo: rgba(87, 145, 90, 0.95); /*adicinado por jota*/
+    --racingRed: #F72323;
+    --pearlAqua: #B7DBCE;
+    --mintCream: #EDF5EE;
+    --shadow: rgba(0,0,0,.2);
+    --brancoTransparente :rgba(255,255,255,0.15);
+}
+
 .cor-destaque-texto{
-    color: #3bdf51;
+    color: var(--malachite);
 }
 
 body{
-    background-color: #026939;
+    background-color: var(--darkEmerald);
     color: white;
     font-family: 'Inter', sans-serif;
 }
-
 
 /* fundo principal */
 .area-fundo{
@@ -22,10 +33,8 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     padding: 0 100px 60px 100px;
 }
-
 
 /* cabeçalho */
 header{
@@ -45,7 +54,6 @@ header{
     flex-wrap: wrap;
 }
 
-
 /* menu de perfil */
 .perfil-menu{
     position: relative;
@@ -54,7 +62,7 @@ header{
 
 .profile-icon{
     font-size: 55px;
-    color: #d9d9d9;
+    color: var(--mintCream);
 }
 
 .dropdown{
@@ -62,21 +70,13 @@ header{
     top: 80px;
     left: 50%;
     transform: translateX(-50%);
-
     width: 140px;
-
-    background: rgba(87, 145, 90, 0.95);
-
-    border-top: 5px solid #3bdf51;
-
+    background: linear-gradient(140deg, transparent, var(--verdeMusgo));
+    border-top: 5px solid var(--malachite);
     border-radius: 0 0 12px 12px;
-
-    display: none;
-    /* começa escondida */
-
+    display: none; 
     padding: 5px;
-
-    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    box-shadow: 0 10px 20px var(--shadow);
 }
 
 .perfil-menu:hover .dropdown{
@@ -93,15 +93,14 @@ header{
 }
 
 .dropdown a:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--shadow);
 }
 
 .pontuacao{
-    background-color: #3bdf51;
+    background-color: var(--malachite);
     text-align: center;
     margin-bottom: 10px;
 }
-
 
 /* botoes do cabecaçho */
 .botoes{
@@ -126,9 +125,12 @@ nav a{
     text-decoration: none;
 }
 
+.saida img{
+    margin-left: 8px;
+}
 
 .cadastro{
-    background-color: rgb(57, 75, 75) ;
+    background-color: rgb(57, 75, 75);
     color: white;
     padding: 15px 25px;
     border: 1px solid white;
@@ -137,7 +139,7 @@ nav a{
 }
 
 .login{
-    background-color: #3bdf51;
+    background-color: var(--malachite);
     color: white;
     padding: 15px 45px;
     border: 1px solid white;
@@ -145,29 +147,21 @@ nav a{
     text-decoration: none;
 }
 
-
-
 .gradiente-login{
-    background: linear-gradient(to right, #263228, #3bdf51);
+    background: linear-gradient(to right, #263228, var(--malachite));
 }
 
 .gradiente-bts-principais{
-    background: linear-gradient(to right, #11873F, #3bdf51);
+    background: linear-gradient(to right, #11873F, var(--malachite));
 }
 
 .gradiente-bordas{
-
 }
 
-
-
-
-/* main */
 main{
     min-height: calc(100vh - 110px);
     align-items: center;
     justify-content: space-between;
-
 }
 
 .txt-img{
@@ -184,7 +178,7 @@ main{
 
 /* texto principal */
 .sustentabilidade{
-    background-color: #3bdf51;
+    background-color: var(--malachite);
     display: inline-block;
     font-size: 15px;
     color: white;
@@ -192,7 +186,6 @@ main{
     border-radius: 40px;
     text-decoration: none;
 }
-
 
 .texto h2{
     font-size: clamp(40px, 7vw, 90px);
@@ -206,9 +199,9 @@ main{
 }
 
 .texto button{
-    background: #3bdf51;
+    background: var(--malachite);
     border: 1px solid white;
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 20px;
     padding: 15px 25px;
     border-radius: 40px;
@@ -226,12 +219,6 @@ main{
     border-radius:40px;
 }
 
-
-
-
-
-/* botoes principais */
-
 .botoes-principais{
     display: flex;
     gap: 20px;
@@ -239,7 +226,7 @@ main{
 }
 
 .quero-doar{
-    background-color: #3bdf51;
+    background-color: var(--malachite);
     color: white;
     padding: 15px 25px;
     border: 1px solid white;
@@ -256,10 +243,6 @@ main{
     text-decoration: none;
 }
 
-
-
-
-/* estatisticas */
 .estatisticas{
     display: flex;
     justify-content: space-between;
@@ -277,23 +260,14 @@ main{
 }
 
 .icone{
-    width: 240px;
-    height: 120px;
-
-    background: rgba(255,255,255,.15);
-
+    width: 200px;
+    height: 200px;
+    background-color: var(--brancoTransparente);
     border-radius: 25px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     backdrop-filter: blur(8px);
-}
-
-.icone i{
-    font-size: 60px;
-    color: white;
 }
 
 .conteudo h2{
@@ -306,10 +280,6 @@ main{
     color: white;
     font-size: 16px;
 }
-
-
-
-/* cards do fim da pag */
 
 .cards-doacao{
     display: flex;
@@ -335,7 +305,6 @@ main{
     margin: 0 auto;
     border-bottom: 2px solid #026939;
     padding-bottom: 1px;
-
 }
 
 .card-doacao li{
@@ -348,7 +317,7 @@ main{
 }
 
 .btn-saiba-mais{
-    background-color: #3bdf51;
+    background-color: var(--malachite);
     color: white;
     border: 2px solid rgb(39, 196, 8);
     border-radius: 40px;
@@ -358,12 +327,6 @@ main{
     margin-left: auto;
     text-decoration: none;
 }
-
-
-
-
-
-/* responsividade??? */
 
 @media (max-width: 768px){
 
