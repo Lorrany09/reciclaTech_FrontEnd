@@ -1,10 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
 :root{
     --darkEmerald: #026939;
     --jadeGreen: #3BB44B;
@@ -14,29 +7,41 @@
     --pearlAqua: #B7DBCE;
     --mintCream: #EDF5EE;
     --shadow: rgba(0,0,0,.2);
-    --brancoTransparente :rgba(255,255,255,0.15);
+    --brancoTransparente :rgba(255, 255, 255, 0.221);
+    --fonteDoTexto: 'Inter', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fonteDoTexto);
 }
 
 .cor-destaque-texto{
     color: var(--malachite);
 }
 
-body{
-    background-color: var(--darkEmerald);
-    color: white;
-    font-family: 'Inter', sans-serif;
+html {
+    overflow-x: hidden;
 }
 
-/* fundo principal */
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    background-color: var(--darkEmerald);
+    color: white;
+}
+
 .area-fundo{
     background-image: url("img/bg-img.png");
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
     padding: 0 100px 60px 100px;
 }
 
-/* cabeçalho */
 header{
     min-height: 110px;
     display: flex;
@@ -45,6 +50,8 @@ header{
     padding: 20px;
     flex-wrap: wrap;
     padding-top: 40px;
+    position: relative;
+    bottom: 70px;
 }
 
 .menu-direita{
@@ -52,23 +59,26 @@ header{
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
+    position: relative;
+    left: 200px;
 }
 
-/* menu de perfil */
 .perfil-menu{
     position: relative;
     cursor: pointer;
 }
 
 .profile-icon{
-    font-size: 55px;
-    color: var(--mintCream);
+    position: relative;
+    top: 25px;
+    right: 80px;
+    width: 220px;
 }
 
 .dropdown{
     position: absolute;
-    top: 80px;
-    left: 50%;
+    top: 135px;
+    left: 35px;
     transform: translateX(-50%);
     width: 140px;
     background: linear-gradient(140deg, transparent, var(--verdeMusgo));
@@ -102,17 +112,44 @@ header{
     margin-bottom: 10px;
 }
 
-/* botoes do cabecaçho */
 .botoes{
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
+.cadastro, .login {
+    position: relative;
+}
+
+.cadastro::before, .login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+}
+
+.cadastro::after, .login::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+}
+
 .logo{
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.logo h1{
+    font-size: 25px;
 }
 
 nav{
@@ -133,7 +170,6 @@ nav a{
     background-color: rgb(57, 75, 75);
     color: white;
     padding: 15px 25px;
-    border: 1px solid white;
     border-radius: 40px;
     text-decoration: none;
 }
@@ -142,7 +178,6 @@ nav a{
     background-color: var(--malachite);
     color: white;
     padding: 15px 45px;
-    border: 1px solid white;
     border-radius: 40px;
     text-decoration: none;
 }
@@ -153,9 +188,6 @@ nav a{
 
 .gradiente-bts-principais{
     background: linear-gradient(to right, #11873F, var(--malachite));
-}
-
-.gradiente-bordas{
 }
 
 main{
@@ -176,15 +208,16 @@ main{
     width: 45%;
 }
 
-/* texto principal */
 .sustentabilidade{
-    background-color: var(--malachite);
+    background: linear-gradient(to right, #11873F, var(--malachite));
     display: inline-block;
     font-size: 15px;
     color: white;
     padding: 6px 25px;
     border-radius: 40px;
     text-decoration: none;
+    position: relative;
+    bottom: 60px;
 }
 
 .texto h2{
@@ -211,7 +244,6 @@ main{
 .imagem{
     width:50%;
     padding: 30px;
-
 }
 
 .imagem img{
@@ -260,14 +292,39 @@ main{
 }
 
 .icone{
-    width: 200px;
-    height: 200px;
+    width: 380px;
+    height: 180px;
     background-color: var(--brancoTransparente);
     border-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+}
+
+.icone::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+}
+
+.icone::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+}
+
+.icone img{
+    width: 120px;
 }
 
 .conteudo h2{
@@ -342,6 +399,7 @@ main{
         width: 100%;
         justify-content: center;
         margin-top: 20px;
+        left: 0;
     }
 
     .texto,
