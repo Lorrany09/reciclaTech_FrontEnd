@@ -1,0 +1,69 @@
+.imagem-card-container{
+    width: 90%;
+    height: 50%;
+    border-radius: 20px;
+    background-color: rgb(223, 223, 223);
+    margin-top: 20px;
+}
+.card{
+    width:20%;
+    height: 30rem;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 45px; */
+}
+.titulo-doacoes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    margin: 3%;
+}
+.titulo-doacoes a{
+    text-decoration: none;
+    color: black;
+}
+.titulo-doacoes h1{
+    color: black;
+}
+.fundo-cards{
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        #3BB44B 10%,
+        #3BB44B 90%,
+        transparent 100%
+    );
+    padding: 30px;
+}
+.botao-card{
+    padding: 8px 25px;
+    background-color: var(--malachite);
+    text-decoration: none;
+    color: white;
+    border-radius:40px;
+    
+}
+.botao-transicao{
+    transition: transform 0.2s ease;
+}
+.botao-transicao:hover{
+    transform: scale(1.05);
+}
+.rodape-card{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+.rodape-card p{
+margin: 0;
+}
+.descricao-doacao{
+    align-self: self-start;
+    padding: 20px;
+}
