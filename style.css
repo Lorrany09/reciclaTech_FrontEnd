@@ -11,7 +11,7 @@
     --shadow: rgba(0,0,0,.2);
     --brancoTransparente :rgba(255, 255, 255, 0.221);
     --gradienteBranco: linear-gradient(90deg, transparent, white, transparent);
-    --gradienteVerde: linear-gradient(to right, #11873F, var(--malachite));;
+    --gradienteVerde: linear-gradient(to right, #11873F, var(--malachite));
     --fonteDoTexto: 'Inter', sans-serif;
 }
 
@@ -438,27 +438,35 @@ main{
     right: 290px;
 }
 
-.ranking{
+.sobreRanking{
     background-color: var(--azulPiscina);
     color: black;
-    padding: 50px 0px 220px 50px;
+    padding: 80px 0px 0px 80px;
+    display: flex;
+    gap: 250px;
+}
+
+.informacoes, .previaRanking{
+    position: relative;
+    bottom: 30px;
 }
 
 .informacoes img{
     width: 450px;
+    margin-top: 20px;
 }
 
-.informacoes h3{
+.informacoes h3 {
     background: var(--jadeGreen);
     display: inline-block;
     font-size: 15px;
     color: white;
     padding: 8px 18px;
     border-radius: 40px;
-    margin: 0px 0px 40px 0px;
+    margin: 0px 0px 30px 0px;
 }
 
-.informacoes h2{
+.informacoes h2 {
     font-weight: bolder;
     font-size: 45px;
     max-width: 280px;
@@ -466,16 +474,16 @@ main{
     word-break: break-word;
 }
 
-.informacoes p{
+.informacoes p {
     max-width: 450px;
-    word-wrap: break-word;
-    word-break: break-word;
+    color: black;
+    margin-top: 20px; 
 }
 
 .botoesRanking{
     display: flex;
     gap: 30px;
-    margin: 30px 0px 0px 0px;
+    margin: 60px 0px 0px 0px;
 }
 
 .doarRanking{
@@ -518,6 +526,112 @@ main{
 
 .btn-saiba-mais:hover, .btn-saiba-mais2:hover, .doarRanking:hover, .verRaking:hover{
     transform: scale(1.05);
+}
+
+.previaRanking{
+    background-color: var(--jadeGreen);
+    width: 630px;
+    height: 800px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.previaRanking::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 300px;
+    background: linear-gradient(to bottom, transparent, var(--azulPiscina) 50%, var(--azulPiscina) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cabecalho-tabela{
+    color: white;
+    font-weight: 700;
+    display: flex;
+    gap: 90px;
+}
+
+.ranking, .cabecalho-tabela{
+    position: relative;
+    bottom: 70px;
+}
+
+.cabecalho-tabela .doacoes{
+    position: relative;
+    left: 28px;
+}
+
+.cabecalho img{
+    position: relative;
+    left: 460px;
+    bottom: 80px;
+}
+
+.cabecalho h2, .cabecalho p{
+    position: relative;
+    top: 50px;
+    color: white;
+}
+
+.cabecalho h2{
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.teste{
+    background-color: white;
+    border-radius: 20px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    margin-bottom: 10px;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.user span{
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.colocacao{
+    position: relative;
+    right: 10px;
+    background-color: var(--jadeGreen);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+}
+
+.pontos{
+    background-color: var(--jadeGreen);
+    width: 115px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+    position: relative;
+    left: 10px;
+    font-weight: 700;
 }
 
 @media (max-width: 768px){
