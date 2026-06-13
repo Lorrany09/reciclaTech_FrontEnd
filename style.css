@@ -1,8 +1,9 @@
 :root{
     --darkEmerald: #026939;
     --jadeGreen: #3BB44B;
+    --verdeMenta: #a2cda8a0;
     --malachite: #3BDF51;
-    --verdeMusgo: rgba(87, 145, 90, 0.95); /*adicinado por jota*/
+    --verdeMusgo: rgba(87, 145, 90, 0.95);
     --racingRed: #F72323;
     --pearlAqua: #B7DBCE;
     --mintCream: #EDF5EE;
@@ -122,43 +123,23 @@ header{
     position: relative;
 }
 
-/* .cadastro::before, .login::before {
+.borda-gradiente::before, .btn-saiba-mais::before, .btn-saiba-mais2::before{
     content: "";
     position: absolute;
     top: 0;
     left: 20%;
     right: 20%;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(90deg, transparent, white, transparent);
 }
 
-.cadastro::after, .login::after {
+.borda-gradiente::after, .btn-saiba-mais::after, .btn-saiba-mais2::after{
     content: "";
     position: absolute;
     bottom: 0;
     left: 20%;
     right: 20%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, white, transparent);
-} */
-
-.borda-gradiente::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 20%;
-    right: 20%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, white, transparent);
-}
-
-.borda-gradiente::after{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 20%;
-    right: 20%;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(90deg, transparent, white, transparent);
 }
 
@@ -249,16 +230,6 @@ main{
 .texto p{
     max-width: 550px;
     margin-bottom: 40px;
-}
-
-.texto button{
-    background: var(--malachite);
-    border: 1px solid white;
-    color: white;
-    font-size: 20px;
-    padding: 15px 25px;
-    border-radius: 40px;
-    text-decoration: none;
 }
 
 .imagem{
@@ -358,51 +329,114 @@ main{
     font-size: 16px;
 }
 
-.cards-doacao{
+.cardsNotebooks-doacao{
+    display: flex;
+}
+
+.card-doacao{
     display: flex;
     gap: 40px;
     margin-top: 50px;
     flex-wrap: wrap;
+    background-color: var(--jadeGreen);
+    padding: 25px 35px;
+    border-radius: 20px;
+    flex: 1;
+    width: 680px;
+    flex-direction: column;
+    height: 850px;
+    margin: 0px 20px 20px 35px;
 }
 
-.card-doacao{
-    background-color: white;
-    color: #026939;
-    padding: 25px 35px;
-    border-radius: 40px;
-    flex: 1;
-    min-width: 300px;
+.cardsNotebooks-doacao h2{
+    color: black;
+    width: fit-content;
+    margin: 0px 0px 30px 50px;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.cardItensNaoDoar, .cardItensDoar{
     display: flex;
     flex-direction: column;
-    min-height: 400px;
 }
 
-.card-doacao h1{
-    width: fit-content;
-    margin: 0 auto;
-    border-bottom: 2px solid #026939;
-    padding-bottom: 1px;
+#lista, #lista2{
+    margin-top: 50px;
+    position: relative;
+    right: 35px;
+    gap: 50px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
 }
 
-.card-doacao li{
-    padding-bottom: 5px;
+#lista li, #lista2 li{
     font-size: 25px;
+    cursor: pointer;
+    color: var(--mintCream);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 220px;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
-.card-doacao ul{
-    padding-top: 30px;
+#lista li::before, #lista2 li::before{
+    content: url("/img/setinha.svg");
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 1;
+    vertical-align: middle;
 }
 
-.btn-saiba-mais{
-    background-color: var(--malachite);
+#lista li:hover, #lista2 li:hover{
+    color: var(--darkEmerald);
+}
+
+#lista li.selecionado, #lista2 li.selecionado {
+    color: var(--darkEmerald);
+    text-decoration: underline;
+}
+
+.primeiraFoto, .segundaFoto{
+    width: 380px;
+    height: 400px;
+    border-radius: 30px;
+}
+
+.segundaFoto{
+    position: relative;
+    right: 50px;
+}
+
+.btn-saiba-mais, .btn-saiba-mais2{
+    background-color: var(--verdeMenta);
     color: white;
-    border: 2px solid rgb(39, 196, 8);
     border-radius: 40px;
     padding: 15px 30px;
     font-size: 18px;
     cursor: pointer;
-    margin-left: auto;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    width: 180px;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.btn-saiba-mais{
+    right: 250px;
+}
+
+.btn-saiba-mais2{
+    right: 290px;
+}
+
+.btn-saiba-mais:hover, .btn-saiba-mais2:hover{
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px){
