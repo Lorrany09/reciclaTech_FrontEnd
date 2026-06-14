@@ -58,6 +58,11 @@ header{
     margin-bottom: 50px;
 }
 
+.logo img{
+    width: 60px;
+    height: 60px;
+}
+
 .menu-direita{
     display: flex;
     align-items: center;

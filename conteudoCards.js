@@ -1,48 +1,48 @@
 const itensDoar = ["Celulares", "Notebooks", "Roteadores", "Acessórios"];
 const itensNaoDoar = ["Pilhas", "Baterias vazadas", "Lâmpadas", "Equipamentos quebrados"];
-//trocar depois para as imagens definitivas
+
 const imagensItensDoar = [
     {
         titulo: "Celulares",
-        img: "/img/celulares.jpg",
+        img: "/img/celulares.webp",
         alt: "Imagem de celulares"        
     },
     {
         titulo: "Notebooks",
-        img: "/img/notebooks.jpg",
+        img: "/img/notebooks.webp",
         alt: "Imagem de notebooks"
     },
     {
         titulo: "Roteadores",
-        img: "/img/roteadores.jpg",
+        img: "/img/roteadores.webp",
         alt: "Imagem de roteadores"
     },
     {
         titulo: "Acessórios",
-        img: "/img/acessorios.jpg",
+        img: "/img/acessorios.webp",
         alt: "Imagem de acessórios de computador"
     },
 ]
-//trocar depois para as imagens definitivas
+
 const imagensItensNaoDoar = [
     {
         titulo: "Pilhas",
-        img: "/img/pilhas.jpg",
+        img: "/img/pilhas.webp",
         alt: "Imagem de pilhas usadas"
     },
     {
         titulo: "Baterias vazadas",
-        img: "/img/bateriasVazadas.jpg",
+        img: "/img/bateriasVazadas.webp",
         alt: "Imagem de baterias vazadas"
     },
     {
         titulo: "Lâmpadas",
-        img: "/img/lampada.jpg",
+        img: "/img/lampada.webp",
         alt: "Imagem de lâmpadas"
     },
     {
         titulo: "Equipamentos quebrados",
-        img: "/img/equipamentosQuebrados.jpg",
+        img: "/img/equipamentosQuebrados.webp",
         alt: "Imagem de equipamentos tecnologicos quebrados"
     },
 ]
