@@ -374,7 +374,7 @@ main{
     flex-direction: column;
 }
 
-#lista, #lista2{
+#lista, #lista2 {
     margin-top: 50px;
     position: relative;
     right: 35px;
@@ -384,7 +384,7 @@ main{
     list-style: none;
 }
 
-#lista li, #lista2 li{
+#lista li, #lista2 li {
     font-size: 25px;
     cursor: pointer;
     color: var(--mintCream);
@@ -394,24 +394,26 @@ main{
     max-width: 220px;
     word-wrap: break-word;
     word-break: break-word;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-#lista li::before, #lista2 li::before{
+#lista li::before, #lista2 li::before {
     content: url("/img/setinha.svg");
     display: inline-block;
     width: 25px;
     height: 25px;
     line-height: 1;
     vertical-align: middle;
+    margin-right: 10px;
 }
 
-#lista li:hover, #lista2 li:hover{
+#lista li:hover, #lista2 li:hover {
     color: var(--darkEmerald);
+    transform: translateX(10px);
 }
 
 #lista li.selecionado, #lista2 li.selecionado {
     color: var(--darkEmerald);
-    text-decoration: underline;
 }
 
 .primeiraFoto, .segundaFoto{
