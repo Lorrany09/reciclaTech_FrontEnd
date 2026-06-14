@@ -8,6 +8,8 @@
     --racingRed: #F72323;
     --mintCream: #EDF5EE;
     --shadow: rgba(0,0,0,.2);
+    --corDoFooter: #002310;
+    --corDoFooter2: #001711;
     --brancoTransparente :rgba(255, 255, 255, 0.221);
     --gradienteBranco: linear-gradient(90deg, transparent, white, transparent);
     --gradienteBrancoVertical: linear-gradient(0deg, transparent, white, transparent);
@@ -47,7 +49,6 @@ body {
 }
 
 header{
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -204,7 +205,6 @@ main{
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
-    
 }
 
 .texto{
@@ -243,8 +243,6 @@ main{
 .imagem img{
     width:35rem;
     height: 35rem;
-
-    /* border-radius:40px; */
 }
 
 .botoes-principais{
@@ -700,6 +698,106 @@ main{
 
 .caixinha h4{
     font-size: 18px;
+}
+
+footer{
+    background-color: var(--corDoFooter);
+}
+
+footer > div{
+    padding: 50px;
+}
+
+.conteudo-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudo-footer h2{
+    font-size: 25px;
+    font-weight: 400;
+}
+
+footer > p{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--corDoFooter2);
+    padding: 20px;
+    margin-bottom: 0;
+    margin-top: 60px;
+}
+
+.logo-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    right: 250px;
+    bottom: 40px;
+}
+
+.plataforma, .links, .contato{
+    position: relative;
+}
+
+.plataforma{
+    right: 120px;
+}
+
+.links{
+    left: 50px;
+}
+
+.contato{
+    left: 190px;
+}
+
+.logo-footer > div h2{
+    font-size: 25px;
+    margin-top: 25px;
+}
+
+.logo-footer > div p{
+    font-size: 12px;
+    width: 160px;
+    word-break: break-all;
+}
+
+.logo-footer img{
+    width: 120px;
+}
+
+.plataforma ul, .links ul, .contato ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.plataforma li, .links li, .contato li {
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.plataforma li:hover, .links li:hover {
+    color: var(--malachite);
+}
+
+.contato li {
+    cursor: default;
+}
+
+footer hr {
+    border: none;
+    height: 2px;
+    width: 90%;
+    background: linear-gradient(90deg, transparent 0%, #ffffff 30%, #ffffff 70%, transparent 100%) !important;
+    margin: 20px auto;
 }
 
 @media (max-width: 768px){
