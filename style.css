@@ -2,11 +2,10 @@
     --darkEmerald: #026939;
     --jadeGreen: #3BB44B;
     --verdeMenta: #a2cda8a0;
-    --azulPiscina: #B7DBCE;
+    --pearlAqua: #B7DBCE;
     --malachite: #3BDF51;
     --verdeMusgo: rgba(87, 145, 90, 0.95);
     --racingRed: #F72323;
-    --pearlAqua: #B7DBCE;
     --mintCream: #EDF5EE;
     --shadow: rgba(0,0,0,.2);
     --brancoTransparente :rgba(255, 255, 255, 0.221);
@@ -54,9 +53,7 @@ header{
     justify-content: space-between;
     padding: 20px;
     flex-wrap: wrap;
-
     position: relative;
-
 }
 
 .menu-direita{
@@ -76,7 +73,6 @@ header{
 
 .profile-icon{
     position: relative;
-
     width: 80px;
     padding-top: 3%;
 }
@@ -446,7 +442,7 @@ main{
 }
 
 .sobreRanking{
-    background-color: var(--azulPiscina);
+    background-color: var(--pearlAqua);
     color: black;
     padding: 80px 0px 0px 80px;
     display: flex;
@@ -466,7 +462,7 @@ main{
     margin-top: 20px;
 }
 
-.informacoes h3 {
+.informacoes h3{
     background: var(--jadeGreen);
     display: inline-block;
     font-size: 15px;
@@ -476,15 +472,16 @@ main{
     margin: 0px 0px 30px 0px;
 }
 
-.informacoes h2 {
+.informacoes h2{
     font-weight: bolder;
     font-size: 45px;
     max-width: 280px;
     word-wrap: break-word;
     word-break: break-word;
+    color: black;
 }
 
-.informacoes p {
+.informacoes p{
     max-width: 450px;
     color: black;
     margin-top: 20px; 
@@ -529,7 +526,7 @@ main{
     left: 4px;
     right: 4px;
     bottom: 4px;
-    background: var(--azulPiscina);
+    background: var(--pearlAqua);
     border-radius: 42px;
     z-index: 1;
 }
@@ -555,7 +552,7 @@ main{
     left: 0;
     right: 0;
     height: 300px;
-    background: linear-gradient(to bottom, transparent, var(--azulPiscina) 50%, var(--azulPiscina) 100%);
+    background: linear-gradient(to bottom, transparent, var(--pearlAqua) 50%, var(--pearlAqua) 100%);
     z-index: 1;
     pointer-events: none;
 }
@@ -642,6 +639,67 @@ main{
     position: relative;
     left: 10px;
     font-weight: 700;
+}
+
+.porque-doar, .caixa, .caixinha, .porque-doar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.porque-doar{
+    gap: 100px;
+    margin-top: 40px;
+}
+
+.caixinha p{
+    word-break: break-all;
+    font-size: 14px;
+}
+
+.porqueDoar h3{
+    background: var(--jadeGreen);
+    display: inline-block;
+    font-size: 20px;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 40px;
+    margin: 0px 0px 30px 0px;
+}
+
+.porqueDoar h2{
+    font-weight: bolder;
+    font-size: 55px;
+    color: black;
+}
+
+.porqueDoar > p{
+    max-width: 750px;
+    color: black;
+    margin-top: 20px; 
+    font-size: 20px;
+}
+
+.caixa{
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.caixinha{
+    background-color: var(--jadeGreen);
+    width: 250px;
+    height: 180px;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.caixinha img{
+    width: 80px;
+}
+
+.caixinha h4{
+    font-size: 18px;
 }
 
 @media (max-width: 768px){
