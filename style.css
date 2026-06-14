@@ -11,6 +11,7 @@
     --shadow: rgba(0,0,0,.2);
     --brancoTransparente :rgba(255, 255, 255, 0.221);
     --gradienteBranco: linear-gradient(90deg, transparent, white, transparent);
+    --gradienteBrancoVertical: linear-gradient(0deg, transparent, white, transparent);
     --gradienteVerde: linear-gradient(to right, #11873F, var(--malachite));
     --fonteDoTexto: 'Inter', sans-serif;
 }
@@ -40,22 +41,22 @@ body {
 
 .area-fundo{
     background-image: url("img/bg-img.png");
-    background-size: 100% 80%;
+    background-size: 100% 75%;
     background-position: top;
     background-repeat: no-repeat;
     padding: 0 100px 60px 100px;
 }
 
 header{
-    min-height: 110px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     flex-wrap: wrap;
-    padding-top: 40px;
+
     position: relative;
-    bottom: 70px;
+
 }
 
 .menu-direita{
@@ -70,19 +71,20 @@ header{
 .perfil-menu{
     position: relative;
     cursor: pointer;
+    padding-right: 150px;
 }
 
 .profile-icon{
     position: relative;
-    top: 25px;
-    right: 80px;
-    width: 220px;
+
+    width: 80px;
+    padding-top: 3%;
 }
 
 .dropdown{
     position: absolute;
-    top: 135px;
-    left: 35px;
+    top: 100px;
+    left: 38px;
     transform: translateX(-50%); 
     width: 140px;
     background: linear-gradient(140deg, transparent, var(--verdeMusgo));
@@ -206,6 +208,7 @@ main{
     align-items: center;
     gap: 40px;
     flex-wrap: wrap;
+    
 }
 
 .texto{
@@ -237,12 +240,15 @@ main{
 
 .imagem{
     width:50%;
-    padding: 30px;
+    height: 50%;
+    padding-left: 5%;
 }
 
 .imagem img{
-    width:100%;
-    border-radius:40px;
+    width:35rem;
+    height: 35rem;
+
+    /* border-radius:40px; */
 }
 
 .botoes-principais{
@@ -334,6 +340,7 @@ main{
 
 .cardsNotebooks-doacao{
     display: flex;
+    justify-content: center;
 }
 
 .card-doacao{
@@ -444,6 +451,9 @@ main{
     padding: 80px 0px 0px 80px;
     display: flex;
     gap: 250px;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
 }
 
 .informacoes, .previaRanking{

@@ -6,14 +6,13 @@
     margin-top: 20px;
 }
 .card{
-    width:18rem;
+    width:20rem;
     height: 30rem;
     background-color: white;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* gap: 45px; */
 }
 .titulo-doacoes{
     display: flex;
