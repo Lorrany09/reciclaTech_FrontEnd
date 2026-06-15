@@ -86,7 +86,7 @@ header{
 
 .dropdown{
     position: absolute;
-    top: 70px;
+    top: 68px;
     left: 30px;
     transform: translateX(-50%); 
     width: 140px;
@@ -96,10 +96,6 @@ header{
     display: none; 
     padding: 5px;
     box-shadow: 0 10px 20px var(--shadow);
-}
-
-.perfil-menu:hover .dropdown{
-    display: block;
 }
 
 .dropdown a, .dropdown p{
