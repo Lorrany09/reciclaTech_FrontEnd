@@ -28,6 +28,13 @@
     color: black;
 }
 .fundo-cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+ /* Ajuste conforme o tamanho do seu layout */
+    margin: 0 auto;
     background: linear-gradient(
         to right,
         transparent 0%,
@@ -43,6 +50,7 @@
     text-decoration: none;
     color: white;
     border-radius:40px;
+    min-width: 7.4rem;
     
 }
 .botao-transicao{
@@ -65,4 +73,46 @@ margin: 0;
 .descricao-doacao{
     align-self: self-start;
     padding: 20px;
+}
+
+
+.imagem-doacao{
+    width: 100%; 
+    object-fit: cover;
+}
+
+
+.carrossel-container {
+    overflow: hidden; 
+    width: 100%;
+}
+
+/* A esteira onde os cards ficam enfileirados */
+.carrossel-track {
+    display: flex;
+    gap: 20px; /* Espaçamento entre um card e outro */
+    transition: transform 0.4s ease-in-out; /* Animação suave de deslizar */
+}
+
+/* Adaptando a largura do seu card para caberem 3 por vez (exemplo) */
+.carrossel-track .card {
+    min-width: 20rem; /* Garante que o card não esmague muito em telas pequenas */
+}
+
+/* Estilo básico das setas */
+.carrossel-seta {
+    background-color: var(--darkEmerald);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 43px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.carrossel-seta:hover {
+    background-color: var(--jadeGreen);/* Um azul mais escuro no hover */
+    transform: scale(1.05);
 }

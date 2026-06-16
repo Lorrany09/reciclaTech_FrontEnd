@@ -4,22 +4,22 @@ const itensNaoDoar = ["Pilhas", "Baterias vazadas", "Lâmpadas", "Equipamentos q
 const imagensItensDoar = [
     {
         titulo: "Celulares",
-        img: "/img/celulares.webp",
+        img: "img/celulares.webp",
         alt: "Imagem de celulares"        
     },
     {
         titulo: "Notebooks",
-        img: "/img/notebooks.webp",
+        img: "img/notebooks.webp",
         alt: "Imagem de notebooks"
     },
     {
         titulo: "Roteadores",
-        img: "/img/roteadores.webp",
+        img: "img/roteadores.webp",
         alt: "Imagem de roteadores"
     },
     {
         titulo: "Acessórios",
-        img: "/img/acessorios.webp",
+        img: "img/acessorios.webp",
         alt: "Imagem de acessórios de computador"
     },
 ]
@@ -27,22 +27,22 @@ const imagensItensDoar = [
 const imagensItensNaoDoar = [
     {
         titulo: "Pilhas",
-        img: "/img/pilhas.webp",
+        img: "img/pilhas.webp",
         alt: "Imagem de pilhas usadas"
     },
     {
         titulo: "Baterias vazadas",
-        img: "/img/bateriasVazadas.webp",
+        img: "img/bateriasVazadas.webp",
         alt: "Imagem de baterias vazadas"
     },
     {
         titulo: "Lâmpadas",
-        img: "/img/lampada.webp",
+        img: "img/lampada.webp",
         alt: "Imagem de lâmpadas"
     },
     {
         titulo: "Equipamentos quebrados",
-        img: "/img/equipamentosQuebrados.webp",
+        img: "img/equipamentosQuebrados.webp",
         alt: "Imagem de equipamentos tecnologicos quebrados"
     },
 ]
