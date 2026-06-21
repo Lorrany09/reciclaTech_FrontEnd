@@ -150,6 +150,24 @@ if (!isset($_SESSION['user_id'])) {
 </body>
 
 <script>
+    const inputFoto = document.getElementById('foto');
+    const preview = document.getElementById('preview');
+
+    inputFoto.addEventListener('change', function() {
+        const arquivo = this.files[0];
+
+        if (arquivo) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(arquivo);
+        }
+    });
+
     function voltar() {
 
         window.location.href = "index.php";
