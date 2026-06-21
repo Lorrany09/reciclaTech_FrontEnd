@@ -131,8 +131,5 @@
     </div>
 
 </div>
-
-<?php //require 'templates/footer.php'; ?>
-
 </body>
 </html>

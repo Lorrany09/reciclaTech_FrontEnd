@@ -111,8 +111,6 @@ $adopted_items = [];
 
             <h1 class="perfil-nome">
                 <?= htmlspecialchars($user['name']) ?>
-
-                <i class="bi bi-pencil-square editar-icon"></i>
             </h1>
 
         </div>
