@@ -41,7 +41,7 @@ body {
 }
 
 .area-fundo{
-    background-image: url("img/bg-img.png");
+    background-image: url("../img/bg-img.png");
     background-size: 100% 75%;
     background-position: top;
     background-repeat: no-repeat;
@@ -394,7 +394,7 @@ main{
 }
 
 #lista li::before, #lista2 li::before {
-    content: url("/img/setinha.svg");
+    content: url("../img/setinha.svg");
     display: inline-block;
     width: 25px;
     height: 25px;

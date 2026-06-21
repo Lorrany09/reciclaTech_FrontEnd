@@ -1,27 +1,27 @@
 // 1. Novos dados para o carrossel "Sobre"
 const listaSobre = [
     {
-        imagem: 'img/dica1.jpg', 
+        imagem: '../img/dica1.jpg', 
         titulo: 'Onde descartar pilhas?',
         descricao: 'Saiba quais são os pontos de coleta específicos para pilhas e baterias na sua região.'
     },
     {
-        imagem: 'img/dica2.jpg',
+        imagem: '../img/dica2.jpg',
         titulo: 'Como limpar dados',
         descricao: 'Aprenda a formatar seu celular ou notebook de forma segura antes de fazer a doação.'
     },
     {
-        imagem: 'img/dica3.jpg',
+        imagem: '../img/dica3.jpg',
         titulo: 'Reciclagem de Placas',
         descricao: 'Entenda como as placas de circuito são processadas para extração de metais valiosos.'
     },
     {
-        imagem: 'img/dica4.jpg',
+        imagem: '../img/dica4.jpg',
         titulo: 'Impacto Ambiental',
         descricao: 'Veja o quanto de lixo eletrônico é gerado anualmente e como podemos reduzir isso.'
     },
     {
-        imagem: 'img/dica5.jpg',
+        imagem: '../img/dica5.jpg',
         titulo: 'quinta dica',
         descricao: 'Veja a melhor dica de todo o universo observavel.'
     }

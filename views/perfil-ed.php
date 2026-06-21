@@ -93,8 +93,6 @@ $adopted_items = [];
 
 <body>
 
-<?php //require 'templates/header.php'; ?>
-
 <div class="perfil-container">
 
     <div class="perfil-header">
@@ -111,6 +109,8 @@ $adopted_items = [];
 
             <h1 class="perfil-nome">
                 <?= htmlspecialchars($user['name']) ?>
+
+                <i class="bi bi-pencil-square editar-icon"></i>
             </h1>
 
         </div>
@@ -253,7 +253,4 @@ $adopted_items = [];
 
 </div>
 
-<?php //require 'templates/footer.php'; ?>
-
 </body>
-</html>

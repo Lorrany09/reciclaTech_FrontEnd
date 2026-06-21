@@ -1,30 +1,30 @@
 const listaDeDoacoes = [
     {
-        imagem: 'img/equipamentosQuebrados.webp',
+        imagem: '../img/equipamentosQuebrados.webp',
         nome: 'iPhone 11',
         descricao: 'Tela levemente trincada, mas funcionando perfeitamente.',
         localizacao: 'Centro - Iguatu, CE'
     },
     {
-        imagem: 'img/notebooks.webp',
+        imagem: '../img/notebooks.webp',
         nome: 'Notebook Dell Inspiron',
         descricao: 'Falta bateria, funciona apenas na tomada. 8GB RAM.',
         localizacao: 'Bairro Flores - Iguatu, CE'
     },
     {
-        imagem: 'img/roteadores.webp',
+        imagem: '../img/roteadores.webp',
         nome: 'Teclado Mecânico Redragon',
         descricao: 'Algumas teclas falhando, bom para retirada de peças.',
         localizacao: 'Bairro Veneza - Iguatu, CE'
     },
     {
-        imagem: 'img/acessorios.webp',
+        imagem: '../img/acessorios.webp',
         nome: 'Monitor LG 21"',
         descricao: 'Mancha na tela, mas liga normalmente.',
         localizacao: 'Bairro Prado - Iguatu, CE'
     },
     {
-        imagem: 'img/celulares.webp',
+        imagem: '../img/celulares.webp',
         nome: 'celular moto G',
         descricao: 'A tela descolou, mas liga normalmente.',
         localizacao: 'bairro areias - Iguatu, CE'
