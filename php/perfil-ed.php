@@ -93,6 +93,8 @@ $adopted_items = [];
 
 <body>
 
+<?php //require 'templates/header.php'; ?>
+
 <div class="perfil-container">
 
     <div class="perfil-header">
@@ -253,4 +255,7 @@ $adopted_items = [];
 
 </div>
 
+<?php //require 'templates/footer.php'; ?>
+
 </body>
+</html>

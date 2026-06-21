@@ -34,9 +34,10 @@ body{
 /* CONTEÚDO */
 
 .titulo-pagina{
-    color: var(--darkEmerald);
+    color: var(--preto);
     font-weight: 700;
     margin-bottom: 25px;
+    font-size: 36px;
 }
 
 .cartao-doacao{
@@ -115,7 +116,7 @@ label{
     border: none;
     border-radius: 30px;
 
-    padding: 10px 40px;
+    padding: 10px 65px;
 }
 
 .botao-cancelar:hover{
@@ -130,7 +131,7 @@ label{
     border: none;
     border-radius: 30px;
 
-    padding: 10px 45px;
+    padding: 10px 65px;
 }
 
 .botao-enviar:hover{

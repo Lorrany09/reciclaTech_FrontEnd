@@ -19,13 +19,16 @@
 
 <body>
 
+<?php //require 'templates/header.php'; ?>
+
 <div class="container py-5">
 
-    <h1 class="titulo-pagina">
-        Fazer nova doação
-    </h1>
-
+    
     <div class="cartao-doacao">
+        
+        <h1 class="titulo-pagina">
+            Fazer nova doação
+        </h1>
 
         <form>
 
@@ -128,6 +131,8 @@
     </div>
 
 </div>
+
+<?php //require 'templates/footer.php'; ?>
 
 </body>
 </html>
