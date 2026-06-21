@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
     <div class="conteudo-footer">
         <div class="logo-footer">
             <img src="../img/ReciclaTech 1.png" alt="Logo do site">
