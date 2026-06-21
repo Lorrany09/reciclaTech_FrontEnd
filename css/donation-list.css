@@ -1,3 +1,4 @@
+
 .botao-card.not-selected{
     padding: 8px 25px;
     border: 2px solid #8a8a8a;
@@ -5,4 +6,35 @@
     min-width: 7.4rem;
     color: #8a8a8a;
     background-color: #eaeaea;
+}
+
+#main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 10px 67px;
+    color: #000000;
+}
+
+#search-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 15px auto 60px auto;
+    color: #000000;
+}
+
+#search-container h2{
+    margin-bottom: 25px;
+}
+
+#searchBar input{
+    width: 900px;
+    padding: 12px 10px;
+    border-radius:40px;
+    border: none;
+    background-color: #d9d9d9;
+    color: #7b7b7b;
 }
