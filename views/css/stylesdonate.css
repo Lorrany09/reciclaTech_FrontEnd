@@ -56,7 +56,17 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    position: relative;
+    overflow: hidden;
 }
+
+.preview-foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 .icone-foto{
     font-size: 100px;

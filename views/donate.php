@@ -25,8 +25,6 @@ if (!isset($_SESSION['user_id'])) {
 
 </head>
 
-
-
 <body>
 
     <?php //require 'templates/header.php'; 
@@ -41,7 +39,7 @@ if (!isset($_SESSION['user_id'])) {
                 Fazer nova doação
             </h1>
 
-            <form>
+            <form action="submit_donation.php" method="post" enctype="multipart/form-data">
 
                 <div class="row">
 
@@ -49,11 +47,14 @@ if (!isset($_SESSION['user_id'])) {
 
                         <div class="area-foto">
 
-                            <i class="bi bi-card-image icone-foto"></i>
+                            <img id="previewFoto" class="preview-foto" style="display: none;">
+
+                            <i class="bi bi-card-image icone-foto" id="iconeFoto"></i>
 
                             <input
                                 type="file"
                                 id="selecionarFoto"
+                                name="photo"
                                 accept="image/*"
                                 hidden>
 
@@ -61,9 +62,7 @@ if (!isset($_SESSION['user_id'])) {
                                 type="button"
                                 class="btn botao-foto"
                                 onclick="document.getElementById('selecionarFoto').click()">
-
                                 Selecionar Fotos
-
                             </button>
 
                         </div>
@@ -74,50 +73,45 @@ if (!isset($_SESSION['user_id'])) {
 
                         <div class="row g-3">
 
-                            <form action="submit_donation.php" method="post">
+                            <div class="col-md-6">
+                                <label>Nome</label>
+                                <input type="text" name="nome" class="form-control campo" required>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <label>Nome</label>
-                                    <input type="text" name="nome" class="form-control campo" required>
-                                </div>
+                            <div class="col-md-6">
+                                <label>Tipo de aparelho</label>
+                                <input type="text" name="type" class="form-control campo" required>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <label>Tipo de aparelho</label>
-                                    <input type="text" name="type" class="form-control campo" required>
-                                </div>
+                            <div class="col-md-4">
+                                <label>Marca</label>
+                                <input type="text" name="brand" class="form-control campo" required>
+                            </div>
 
-                                <div class="col-md-4">
-                                    <label>Marca</label>
-                                    <input type="text" name="brand" class="form-control campo" required>
-                                </div>
+                            <div class="col-md-4">
+                                <label>Modelo</label>
+                                <input type="text" name="model" class="form-control campo" required>
+                            </div>
 
-                                <div class="col-md-4">
-                                    <label>Modelo</label>
-                                    <input type="text" name="model" class="form-control campo" required>
-                                </div>
+                            <div class="col-md-4">
+                                <label>Condição</label>
 
-                                <div class="col-md-4">
-                                    <label>Condição</label>
+                                <select class="form-select campo" name="condition" required>
+                                    <option value="funcional">Funcional</option>
+                                    <option value="com_defeito">Com defeito</option>
+                                    <option value="para_pecas">Para peças</option>
+                                </select>
+                            </div>
 
-                                    <select class="form-select campo" name="condition" required>
-                                        <option>Novo</option>
-                                        <option>Seminovo</option>
-                                        <option>Desgastado</option>
-                                        <option>Quebrado</option>
-                                    </select>
-                                </div>
+                            <div class="col-12">
 
-                                <div class="col-12">
+                                <label>Descrição</label>
 
-                                    <label>Descrição</label>
+                                <textarea name="description"
+                                    class="form-control campo descricao"
+                                    placeholder="Descreva o aparelho" required></textarea>
 
-                                    <textarea name="description"
-                                        class="form-control campo descricao"
-                                        placeholder="Descreva o aparelho" required></textarea>
-
-                                </div>
-
-                            </form>
+                            </div>
 
                         </div>
 
@@ -150,10 +144,28 @@ if (!isset($_SESSION['user_id'])) {
 </body>
 
 <script>
+    const inputFoto = document.getElementById('selecionarFoto');
+    const previewFoto = document.getElementById('previewFoto');
+    const iconeFoto = document.getElementById('iconeFoto');
+
+    inputFoto.addEventListener('change', function() {
+        const arquivo = this.files[0];
+
+        if (arquivo) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                previewFoto.src = e.target.result;
+                previewFoto.style.display = 'block';
+                iconeFoto.style.display = 'none';
+            };
+
+            reader.readAsDataURL(arquivo);
+        }
+    });
+
     function voltar() {
-
         window.location.href = "index.php";
-
     }
 </script>
 
