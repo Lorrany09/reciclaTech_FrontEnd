@@ -5,9 +5,9 @@
     </div>
     <div class="menu-direita">
         <nav>
-            <a class="cor-destaque-texto" href="">Home</a>
-            <a href="#rank">Ranking</a>
-            <a href="#contato">Contato</a>
+            <a class="cor-destaque-texto" href="index.php">Home</a>
+            <a href="ranking.php">Ranking</a>
+            <a href="#footer">Contato</a>
         </nav>
 
         <?php if (isset($_SESSION['user_id'])): // Usuário logado 

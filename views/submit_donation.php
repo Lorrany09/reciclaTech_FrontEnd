@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'] ?? NULL;
-$device_type = $_POST['device_type'] ?? null;
+$device_type = $_POST['type'] ?? null;
 $brand = $_POST['brand'] ?? null;
 $model = $_POST['model'] ?? null;
 $condition = $_POST['condition'] ?? 'funcional';
@@ -51,9 +51,25 @@ try {
 
     $device_id = $pdo->lastInsertId();
 
+    $stmtUser = $pdo->prepare("SELECT name, email FROM users WHERE id = ?");
+    $stmtUser->execute([$user_id]);
+    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
+
+
     // registrar doação
-    $stmt2 = $pdo->prepare("INSERT INTO donations (device_id, donor_name, donor_email, pickup_address) VALUES (:did, :name, :email, '')");
-    $stmt2->execute([':did' => $device_id]);
+
+    $stmt2 = $pdo->prepare("
+    INSERT INTO donations 
+    (device_id, donor_name, donor_email, pickup_address) 
+    VALUES (:did, :name, :email, :address)
+");
+
+    $stmt2->execute([
+        ':did' => $device_id,
+        ':name' => $user['name'] ?? '',
+        ':email' => $user['email'] ?? '',
+        ':address' => ''
+    ]);
 
 
     if (isset($_SESSION['user_id'])) {
@@ -78,4 +94,5 @@ try {
     exit;
 } catch (PDOException $e) {
     $pdo->rollBack();
+    die("Erro ao cadastrar doação: " . $e->getMessage());
 }
