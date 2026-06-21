@@ -37,7 +37,7 @@ body {
     width: 100%;
     position: relative;
     background-color: var(--mintCream);
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .area-fundo{
