@@ -64,7 +64,7 @@
             <section class="pt-5">
                 <div class="titulo-doacoes">
                     <h1 class="fw-bold">Doações da semana</h1>
-                    <a href="" class="fw-bold">Ver todas ➝</a>
+                    <a href="donation_list.php" class="fw-bold">Ver todas ➝</a>
                 </div>
                 <div class="fundo-cards">
                     <button id="btn-voltar" class="carrossel-seta">←</button>
@@ -237,10 +237,10 @@
     <?php require 'templates/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../js/conteudoCards.js"></script>
     <script src="../js/previaRanking.js"></script>
     <script src="../js/infoFooter.js"></script>
     <script src="../js/dropdown.js"></script>
+    <script src="../js/conteudoCards.js"></script>
     <script src="../js/carrossel.js"></script>
     <script src="../js/carrossel-sobre.js"></script>
 </body>
