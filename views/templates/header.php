@@ -15,8 +15,15 @@
             <div class="perfil-menu">
                 <img onclick="mostrarDropdown()" class="profile-icon" src="../img/profile.png" alt="Foto de perfil do usuario">
                 <div class="dropdown">
-                    <p class="pontuacao">Pontuação</p>
-                    <a href="perfil.php">Perfil</a>
+
+                    <?php if ($_SESSION['user_role'] !== 'admin'): // Link do Admin apenas para admins 
+                    ?><p class="pontuacao">Pontuação</p>
+                        <a href="perfil.php">Perfil</a>
+                    <?php endif; ?>
+                    <?php if ($_SESSION['user_role'] === 'admin'): // Link do Admin apenas para admins 
+                    ?><p class="pontuacao">Admin</p>
+                        <a class="dropdown-item" href="admin.php">Dashboard</a>
+                    <?php endif; ?>
                     <a href="logout.php" class="saida">Sair<img src="../img/iconeSaida.svg" alt="Icone de saida"></a>
                 </div>
             </div>

@@ -117,7 +117,7 @@ if (!isset($_SESSION['user_id'])) {
 
                         <div class="area-botoes">
 
-                            <a href="javascript:voltar()"><button
+                            <a href="javascript:history.back()"><button
                                     type="button"
                                     class="btn botao-cancelar">
                                     Cancelar

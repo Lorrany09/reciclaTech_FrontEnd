@@ -1,4 +1,34 @@
-<?php if (!isset($pdo)) require_once __DIR__ . '/config.php'; ?>
+<?php if (!isset($pdo)) require_once __DIR__ . '/config.php';
+$rankingStmt = $pdo->query("SELECT u.id, u.name, u.address_city, u.address_state, u.points,
+    COUNT(d.id) AS donations_total,
+    SUM(CASE WHEN d.created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY) THEN 1 ELSE 0 END) AS donations_week,
+    SUM(CASE WHEN d.created_at >= DATE_FORMAT(NOW(), '%Y-%m-01') THEN 1 ELSE 0 END) AS donations_month
+    FROM users u LEFT JOIN devices d ON d.user_id = u.id
+    WHERE u.role = 'user' GROUP BY u.id
+    ORDER BY u.points DESC, donations_total DESC, u.name ASC");
+$rankingUsers = $rankingStmt->fetchAll();
+$donationPoints = (int) ($pdo->query("SELECT points_value FROM points_config WHERE action_key = 'doacao_completa'")->fetchColumn() ?: 50);
+$rankingData = array_map(static function ($row) use ($donationPoints) {
+    $total = (int) $row['donations_total'];
+    return [
+        'id' => (int) $row['id'],
+        'nome' => $row['name'],
+        'cidade' => trim(($row['address_city'] ?: 'Cidade não informada') . ($row['address_state'] ? ', ' . $row['address_state'] : '')),
+        'doacoes' => $total,
+        'impacto' => $total . ($total === 1 ? ' item reaproveitado' : ' itens reaproveitados'),
+        'mes' => (int) $row['donations_month'] * $donationPoints,
+        'semana' => (int) $row['donations_week'] * $donationPoints,
+        'geral' => (int) $row['points'],
+        'atual' => isset($_SESSION['user_id']) && (int) $_SESSION['user_id'] === (int) $row['id']
+    ];
+}, $rankingUsers);
+$topThree = array_slice($rankingData, 0, 3);
+$currentPosition = null;
+foreach ($rankingData as $index => $rankedUser) if ($rankedUser['atual']) {
+    $currentPosition = $index + 1;
+    break;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -27,8 +57,8 @@
                 <div class="minha-posicao-icone"><i class="bi bi-person-fill"></i></div>
                 <div>
                     <span>Sua posição</span>
-                    <strong>12º lugar</strong>
-                    <small>1.240 pontos</small>
+                    <strong><?= $currentPosition ? e($currentPosition . 'º lugar') : 'Entre para participar' ?></strong>
+                    <small><?= $currentPosition ? e(number_format($rankingData[$currentPosition - 1]['geral'], 0, ',', '.') . ' pontos') : 'Ranking atualizado' ?></small>
                 </div>
                 <i class="bi bi-arrow-up-right"></i>
             </aside>
@@ -46,28 +76,17 @@
             </div>
 
             <div class="podio">
-                <article class="podio-card segundo-lugar">
-                    <span class="podio-posicao">2</span>
-                    <img class="podio-avatar" src="../asset/img/User.png" alt="Foto de Carlos Lima">
-                    <h3>Carlos Lima</h3>
-                    <p>28 doações</p>
-                    <strong>4.870 pts</strong>
-                </article>
-                <article class="podio-card primeiro-lugar">
-                    <span class="podio-coroa"><i class="bi bi-trophy-fill"></i></span>
-                    <span class="podio-posicao">1</span>
-                    <img class="podio-avatar" src="../asset/img/User.png" alt="Foto de Ana Souza">
-                    <h3>Ana Souza</h3>
-                    <p>34 doações</p>
-                    <strong>5.620 pts</strong>
-                </article>
-                <article class="podio-card terceiro-lugar">
-                    <span class="podio-posicao">3</span>
-                    <img class="podio-avatar" src="../asset/img/User.png" alt="Foto de Marina Alves">
-                    <h3>Marina Alves</h3>
-                    <p>25 doações</p>
-                    <strong>4.390 pts</strong>
-                </article>
+                <?php foreach ([1, 0, 2] as $podiumIndex): if (!isset($topThree[$podiumIndex])) continue;
+                    $person = $topThree[$podiumIndex]; ?>
+                    <article class="podio-card <?= ['primeiro-lugar', 'segundo-lugar', 'terceiro-lugar'][$podiumIndex] ?>">
+                        <?php if ($podiumIndex === 0): ?><span class="podio-coroa"><i class="bi bi-trophy-fill"></i></span><?php endif; ?>
+                        <span class="podio-posicao"><?= $podiumIndex + 1 ?></span>
+                        <img class="podio-avatar" src="../img/User.png" alt="">
+                        <h3><?= e($person['nome']) ?></h3>
+                        <p><?= $person['doacoes'] ?> doaç<?= $person['doacoes'] === 1 ? 'ão' : 'ões' ?></p>
+                        <strong><?= e(number_format($person['geral'], 0, ',', '.')) ?> pts</strong>
+                    </article>
+                <?php endforeach; ?>
             </div>
         </section>
 
@@ -112,6 +131,9 @@
 
     <script src="js/infoFooter.js"></script>
     <script src="js/dropdown.js"></script>
+    <script>
+        window.rankingData = <?= json_encode($rankingData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
+    </script>
     <script src="js/ranking.js"></script>
 </body>
 

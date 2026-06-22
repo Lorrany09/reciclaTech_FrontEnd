@@ -42,11 +42,6 @@ body {
     color: white;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
 .area-fundo{
     background-image: url("../img/bg-img.png");
     background-size: cover;

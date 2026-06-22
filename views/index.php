@@ -1,4 +1,16 @@
-<?php if (!isset($pdo)) require_once __DIR__ . '/config.php'; ?>
+<?php
+if (!isset($pdo)) require_once __DIR__ . '/config.php';
+$homeStats = $pdo->query("SELECT
+    (SELECT COUNT(*) FROM devices) AS devices_total,
+    (SELECT COUNT(*) FROM devices WHERE status = 'donated') AS reused_total,
+    (SELECT COUNT(DISTINCT user_id) FROM devices WHERE user_id IS NOT NULL) AS donors_total")->fetch();
+$latestDevices = $pdo->query("SELECT d.id, d.device_type, d.brand, d.model, d.description, d.photo, u.address_city, u.address_state
+    FROM devices d LEFT JOIN users u ON u.id = d.user_id
+    WHERE d.status = 'available' ORDER BY d.created_at DESC LIMIT 8")->fetchAll();
+$homeRanking = $pdo->query("SELECT u.name, u.points, COUNT(d.id) AS donations_total
+    FROM users u LEFT JOIN devices d ON d.user_id = u.id WHERE u.role = 'user'
+    GROUP BY u.id ORDER BY u.points DESC, donations_total DESC LIMIT 4")->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,7 +24,66 @@
     <link rel="stylesheet" href="../css/carrossel-sobre.css">
     <link rel="stylesheet" href="../css/funcionamento.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
+
+<style>
+    .mapa-container {
+        width: 100%;
+        height: 680px;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #eef6f0;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+
+    .voltar-topo {
+        position: fixed;
+        right: clamp(16px, 3vw, 32px);
+        bottom: clamp(16px, 3vw, 32px);
+        z-index: 1800;
+        display: grid;
+        width: 48px;
+        height: 48px;
+        place-items: center;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        border-radius: 50%;
+        background: var(--darkEmerald);
+        box-shadow: 0 12px 28px rgba(0, 35, 16, 0.28);
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(14px);
+        transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .voltar-topo i {
+        font-size: 21px;
+    }
+
+    .voltar-topo:hover {
+        background: var(--jadeGreen);
+        transform: translateY(-2px);
+    }
+
+    .voltar-topo.visivel {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 480px) {
+        .voltar-topo {
+            width: 44px;
+            height: 44px;
+        }
+    }
+</style>
 
 <body>
     <section class="area-fundo">
@@ -38,7 +109,7 @@
                         <img src="../img/iconeCpu.svg" alt="Desenho de uma cpu">
                     </div>
                     <div class="conteudo">
-                        <h2>X kg de lixo eletrônico reciclado</h2>
+                        <h2><?= (int) $homeStats['reused_total'] ?> dispositivos reaproveitados</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
@@ -47,7 +118,7 @@
                         <img src="../img/iconeSmartphone.svg" alt="Desenho de um smartphone">
                     </div>
                     <div class="conteudo">
-                        <h2>Y dispositivos doados</h2>
+                        <h2>><?= (int) $homeStats['devices_total'] ?> dispositivos doado</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
@@ -56,7 +127,7 @@
                         <img src="../img/iconeUsers.svg" alt="Desenho representando os usuarios">
                     </div>
                     <div class="conteudo">
-                        <h2>Z doadores ativos</h2>
+                        <h2><?= (int) $homeStats['donors_total'] ?> doadores ativos</h2>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
@@ -64,12 +135,27 @@
             <section class="pt-5">
                 <div class="titulo-doacoes">
                     <h1 class="fw-bold">Doações da semana</h1>
-                    <a href="donation_list.php" class="fw-bold">Ver todas ➝</a>
+                    <a href="" class="fw-bold">Ver todas ➝</a>
                 </div>
                 <div class="fundo-cards">
                     <button id="btn-voltar" class="carrossel-seta">←</button>
                     <div class="carrossel-container">
                         <div class="carrossel-track" id="trilho-doacoes">
+                            <?php foreach ($latestDevices as $device):
+                                $deviceName = trim($device['device_type'] . ' ' . $device['brand'] . ' ' . $device['model']);
+                                $location = trim(($device['address_city'] ?: 'Local não informado') . ($device['address_state'] ? ' - ' . $device['address_state'] : ''));
+                            ?>
+                                <div class="card">
+                                    <div class="imagem-card-container"><img class="imagem-doacao" src="<?= e($device['photo'] ?: '../img/equipamentosQuebrados.webp') ?>" alt="Foto de <?= e($deviceName) ?>"></div>
+                                    <div class="descricao-doacao">
+                                        <p class="fw-bold nome-dispositivo"><?= e($deviceName) ?></p>
+                                        <p class="descricao text-muted"><?= e($device['description'] ?: 'Sem descrição.') ?></p>
+                                    </div>
+                                    <div class="rodape-card">
+                                        <p><?= e($location) ?></p><a href="adote.php" class="botao-card gradiente-bts-principais botao-transicao">Eu quero</a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <button id="btn-avancar" class="carrossel-seta">→</button>
@@ -85,7 +171,7 @@
             <img src="../img/top-users.png" alt="ranking">
             <div class="botoesRanking">
                 <a href="" class="doarRanking">Quero Doar</a>
-                <a href="" class="verRaking"><span>Ver Ranking</span></a>
+                <a href="ranking.php" class="verRaking"><span>Ver Ranking</span></a>
             </div>
         </div>
         <div class="previaRanking">
@@ -100,7 +186,13 @@
                 <span class="doacoes">Qtd. Doações</span>
                 <span>Pontuação</span>
             </div>
-            <div class="ranking"></div>
+            <div class="ranking">
+                <?php foreach ($homeRanking as $position => $donor): ?>
+                    <div class="teste"><span class="colocacao"><?= $position + 1 ?></span>
+                        <div class="user"><img src="../img/User.png" alt=""><span><?= e($donor['name']) ?></span></div><span><?= (int) $donor['donations_total'] ?></span><span class="pontos"><?= (int) $donor['points'] ?></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </section>
 
@@ -141,6 +233,9 @@
         </div>
         <div class="ecopontos">
             <div class="container-mapa">
+                <div class="mapa-container">
+                    <div id="map"></div>
+                </div>
             </div>
             <div class="ecopontos-descricao">
                 <h1 class="fw-bold"><strong>Ecopontos</strong> na Cidade</h1>
@@ -235,14 +330,88 @@
     </main>
 
     <?php require 'templates/footer.php'; ?>
-
+    </footer>
+    <button class="voltar-topo" id="voltar-topo" type="button" title="Voltar ao topo" aria-label="Voltar ao topo">
+        <i class="bi bi-arrow-up"></i>
+    </button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../js/previaRanking.js"></script>
+    <script src="../js/conteudoCards.js"></script>
     <script src="../js/infoFooter.js"></script>
     <script src="../js/dropdown.js"></script>
-    <script src="../js/conteudoCards.js"></script>
-    <script src="../js/carrossel.js"></script>
     <script src="../js/carrossel-sobre.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        const trilho = document.getElementById('trilho-doacoes');
+        const cardsDoacao = trilho?.querySelectorAll('.card') || [];
+        let posicaoAtual = 0;
+
+        function atualizarCarrossel() {
+            if (!cardsDoacao.length) return;
+            trilho.style.transform = `translateX(-${(cardsDoacao[0].offsetWidth + 20) * posicaoAtual}px)`;
+        }
+        document.getElementById('btn-avancar')?.addEventListener('click', () => {
+            if (posicaoAtual < Math.max(0, cardsDoacao.length - 3)) {
+                posicaoAtual++;
+                atualizarCarrossel();
+            }
+        });
+        document.getElementById('btn-voltar')?.addEventListener('click', () => {
+            if (posicaoAtual > 0) {
+                posicaoAtual--;
+                atualizarCarrossel();
+            }
+        });
+    </script>
+
 </body>
+
+<script>
+    // Coordenadas de Iguatu - CE
+    const latitude = -6.361428075382552;
+    const longitude = -39.29868647321685;
+
+    const map = L.map('map').setView([latitude, longitude], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    // Marcador da localização principal
+    L.marker([latitude, longitude])
+        .addTo(map)
+        .bindPopup('Sua localização')
+        .openPopup();
+
+    // Exemplo de ecoponto
+    L.marker([-6.3650, -39.3005])
+        .addTo(map)
+        .bindPopup('Ecoponto');
+
+    // Exemplo de instituição/ONG
+    L.marker([-6.3550, -39.2920])
+        .addTo(map)
+        .bindPopup('Instituição Social / ONG');
+
+
+    const botaoVoltarTopo = document.getElementById("voltar-topo");
+
+    function atualizarBotaoVoltarTopo() {
+        if (!botaoVoltarTopo) return;
+        botaoVoltarTopo.classList.toggle("visivel", window.scrollY > 500);
+    }
+
+    botaoVoltarTopo?.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    window.addEventListener("scroll", atualizarBotaoVoltarTopo, {
+        passive: true
+    });
+    atualizarBotaoVoltarTopo();
+</script>
 
 </html>

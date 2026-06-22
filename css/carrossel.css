@@ -51,7 +51,7 @@
     color: white;
     border-radius:40px;
     min-width: 7.4rem;
-    border: none;
+    
 }
 .botao-transicao{
     transition: transform 0.2s ease;
