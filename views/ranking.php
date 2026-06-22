@@ -43,10 +43,10 @@ foreach ($rankingData as $index => $rankedUser) if ($rankedUser['atual']) {
 </head>
 
 <body class="ranking-page">
+    
+    <?php require 'templates/header.php'; ?>
+
     <section class="ranking-topo">
-
-        <?php require 'templates/header.php'; ?>
-
         <div class="ranking-hero">
             <div class="ranking-hero-texto">
                 <span class="ranking-etiqueta"><i class="bi bi-trophy-fill"></i> Comunidade em ação</span>

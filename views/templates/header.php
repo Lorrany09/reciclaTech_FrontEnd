@@ -1,6 +1,6 @@
 <header>
     <div class="logo">
-        <a href="#"><img src="../img/ReciclaTech 1.png" alt="logo"></a>
+        <a href="index.php"><img src="../img/ReciclaTech 1.png" alt="logo"></a>
         <h1>ReciclaTech</h1>
     </div>
     <div class="menu-direita">
@@ -15,6 +15,7 @@
             <div class="perfil-menu">
                 <img onclick="mostrarDropdown()" class="profile-icon" src="../img/profile.png" alt="Foto de perfil do usuario">
                 <div class="dropdown">
+<<<<<<< HEAD
 
                     <?php if ($_SESSION['user_role'] !== 'admin'): // Link do Admin apenas para admins 
                     ?><p class="pontuacao">Pontuação</p>
@@ -25,6 +26,17 @@
                         <a class="dropdown-item" href="admin.php">Dashboard</a>
                     <?php endif; ?>
                     <a href="logout.php" class="saida">Sair<img src="../img/iconeSaida.svg" alt="Icone de saida"></a>
+=======
+                    <p class="pontuacao">Pontuação</p>
+                    <a href="perfil.php">Perfil</a>
+                    <a href="logout.php" class="saida">Sair
+                        <svg width="15px" height="15px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12L13 12" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M18 15L20.913 12.087V12.087C20.961 12.039 20.961 11.961 20.913 11.913V11.913L18 9" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M16 5V4.5V4.5C16 3.67157 15.3284 3 14.5 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H14.5C15.3284 21 16 20.3284 16 19.5V19.5V19" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+>>>>>>> 7f937478e9d16d3a2f3e7902de22e9b36f3c68e8
                 </div>
             </div>
         <?php endif; ?>

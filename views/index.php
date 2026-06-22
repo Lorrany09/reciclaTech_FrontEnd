@@ -86,8 +86,8 @@ $homeRanking = $pdo->query("SELECT u.name, u.points, COUNT(d.id) AS donations_to
 </style>
 
 <body>
+    <?php require 'templates/header.php'; ?>
     <section class="area-fundo">
-        <?php require 'templates/header.php'; ?>
         <main>
             <section class="txt-img">
                 <div class="texto">
@@ -96,7 +96,7 @@ $homeRanking = $pdo->query("SELECT u.name, u.points, COUNT(d.id) AS donations_to
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta voluptatem tenetur impedit quos, accusantium officiis architecto ipsa quisquam accusamus necessitatibus iusto fugit? Sint sed velit non aperiam quis nam tempora.</p>
                     <div class="botoes-principais">
                         <a href="donate.php" class="quero-doar gradiente-bts-principais borda-gradiente botao-transicao">Quero Doar</a>
-                        <a href="" class="quero-receber borda-gradiente botao-transicao">Quero Receber</a>
+                        <a href="donation_list.php" class="quero-receber borda-gradiente botao-transicao">Quero Receber</a>
                     </div>
                 </div>
                 <div class="imagem">
@@ -318,13 +318,13 @@ $homeRanking = $pdo->query("SELECT u.name, u.points, COUNT(d.id) AS donations_to
     <section class="sobre">
         <h1 class="fw-bold">Mais sobre o descarte eletrônico</h1>
         <div class="carrossel-wrapper">
-            <button id="btn-voltar-sobre" class="carrossel-seta">&lt;</button>
+            <button id="btn-voltar-sobre" class="carrossel-seta">←</button>
             <div class="carrossel-container">
                 <div class="carrossel-track" id="trilho-sobre">
                 </div>
             </div>
 
-            <button id="btn-avancar-sobre" class="carrossel-seta">&gt;</button>
+            <button id="btn-avancar-sobre" class="carrossel-seta">→</button>
         </div>
     </section>
     </main>

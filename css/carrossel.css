@@ -22,11 +22,9 @@
 }
 .titulo-doacoes a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
-.titulo-doacoes h1{
-    color: black;
-}
+
 .fundo-cards{
     display: flex;
     align-items: center;

@@ -42,6 +42,7 @@ body {
     color: white;
 }
 
+<<<<<<< HEAD
 .area-fundo{
     background-image: url("../img/bg-img.png");
     background-size: cover;
@@ -51,14 +52,33 @@ body {
 }
 
 header{
+=======
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Atualizado: O header agora cuida do seu próprio espaçamento lateral */
+header {
+>>>>>>> 7f937478e9d16d3a2f3e7902de22e9b36f3c68e8
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    /* Unificamos os 20px superiores/inferiores com o clamp lateral da Home */
+    padding: 20px clamp(16px, 5vw, 100px); 
     flex-wrap: wrap;
     position: relative;
     z-index: 2000;
     margin-bottom: 50px;
+}
+
+/* Atualizado: Removemos o padding lateral que antes interferia no header */
+.area-fundo {
+    background-image: url("../img/bg-img.png");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    padding: 180px clamp(16px, 5vw, 100px) 60px;
 }
 
 .logo img{
@@ -135,12 +155,12 @@ header{
     left: 30px;
     transform: translateX(-50%); 
     width: 140px;
-    background: linear-gradient(140deg, transparent, var(--verdeMusgo));
     border-top: 5px solid var(--malachite);
     border-radius: 0 0 12px 12px;
     display: none; 
     padding: 5px;
     box-shadow: 0 10px 20px var(--shadow);
+    backdrop-filter: blur(12px);
     z-index: 2400;
 }
 
@@ -202,6 +222,7 @@ header{
 
 .logo h1{
     font-size: 16px;
+    color: white
 }
 
 nav{
