@@ -15,8 +15,8 @@
 </head>
 
 <body>
+    <?php require 'templates/header.php'; ?>
     <section class="area-fundo">
-        <?php require 'templates/header.php'; ?>
         <main>
             <section class="txt-img">
                 <div class="texto">
@@ -223,13 +223,13 @@
     <section class="sobre">
         <h1 class="fw-bold">Mais sobre o descarte eletrônico</h1>
         <div class="carrossel-wrapper">
-            <button id="btn-voltar-sobre" class="carrossel-seta">&lt;</button>
+            <button id="btn-voltar-sobre" class="carrossel-seta">←</button>
             <div class="carrossel-container">
                 <div class="carrossel-track" id="trilho-sobre">
                 </div>
             </div>
 
-            <button id="btn-avancar-sobre" class="carrossel-seta">&gt;</button>
+            <button id="btn-avancar-sobre" class="carrossel-seta">→</button>
         </div>
     </section>
     </main>

@@ -40,22 +40,27 @@ body {
     color: rgb(255, 255, 255);
 }
 
-.area-fundo{
-    background-image: url("../img/bg-img.png");
-    background-size: 100% 75%;
-    background-position: top;
-    background-repeat: no-repeat;
-    padding: 0 100px 60px 100px;
-}
-
-header{
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    flex-wrap: wrap;
-    position: relative;
+    padding: 20px clamp(16px, 5vw, 100px);
     margin-bottom: 50px;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+}
+
+/* Atualizado: Removemos o padding lateral que antes interferia no header */
+.area-fundo {
+    background-image: url("../img/bg-img.png");
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    padding: 180px clamp(16px, 5vw, 100px) 60px;
 }
 
 .logo img{
@@ -69,13 +74,11 @@ header{
     gap: 40px;
     flex-wrap: wrap;
     position: relative;
-    left: 200px;
 }
 
 .perfil-menu{
     position: relative;
     cursor: pointer;
-    padding-right: 150px;
 }
 
 .profile-icon{
@@ -90,12 +93,13 @@ header{
     left: 30px;
     transform: translateX(-50%); 
     width: 140px;
-    background: linear-gradient(140deg, transparent, var(--verdeMusgo));
     border-top: 5px solid var(--malachite);
     border-radius: 0 0 12px 12px;
     display: none; 
     padding: 5px;
     box-shadow: 0 10px 20px var(--shadow);
+    backdrop-filter: blur(12px);
+    z-index: 2400;
 }
 
 .dropdown a, .dropdown p{
@@ -156,6 +160,7 @@ header{
 
 .logo h1{
     font-size: 16px;
+    color: white
 }
 
 nav{
@@ -229,7 +234,7 @@ main{
 
 .texto h2{
     font-size: clamp(40px, 7vw, 90px);
-    font-weight: bolder;
+    font-weight: bold;
     line-height: 1.1;
     margin-bottom: 30px;
 }

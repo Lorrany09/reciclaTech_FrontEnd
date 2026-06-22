@@ -4,7 +4,6 @@
 }
 
 .perfil-topo {
-    padding: 0 clamp(16px, 5vw, 100px) clamp(42px, 6vw, 72px);
     background:
         linear-gradient(115deg, rgba(0, 35, 16, 0.97), rgba(2, 105, 57, 0.91)),
         url("../img/bg-img.png") center / cover;
@@ -25,6 +24,7 @@
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: clamp(18px, 3vw, 32px);
+    padding-bottom: clamp(18px, 3vw, 32px);
     max-width: 1240px;
     margin: 0 auto;
 }

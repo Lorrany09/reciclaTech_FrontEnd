@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="../css/donation-list.css">
 </head>
 <body>
-    <?php require 'templates/header.php'; ?>
-    
+    <div class="header-container">
+        <?php require 'templates/header.php'; ?>
+    </div>
     <div id="search-container">
         <h2>Procure por dispositivos</h2>
         
