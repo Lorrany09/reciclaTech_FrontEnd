@@ -60,3 +60,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.dropdown svg path{
+    stroke: #000;
+}
